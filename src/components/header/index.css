@@ -1,0 +1,19 @@
+header{
+    grid-area: header;
+    text-align: center;
+    padding: 0% 1%;
+}
+header > h1{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    font-size: 3.5vw;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.1em;
+}
+header > h4{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    font-size: 1.5vw;
+    margin-block-start: 0.5em;
+    margin-block-end: 0em;
+}
