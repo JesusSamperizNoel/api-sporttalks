@@ -1,6 +1,6 @@
 # Sport Talks front-end application: 
 
-This application use react to give functionality to the web page 
+This application use react to give functionality to the web page of the final proyect of DAW course 
 
 ## Available Scripts
 
