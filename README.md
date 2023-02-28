@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Sport Talks front-end application: 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application use react to give functionality to the web page of the final proyect of DAW course 
 
 ## Available Scripts
 
