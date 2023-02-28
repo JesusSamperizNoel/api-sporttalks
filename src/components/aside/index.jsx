@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import './index.css'
 
-export default function Aside() {
+export default function Aside({URL}) {
     
+    const [talks, setTalks] = useState([]) 
 
     return(
         <aside>
