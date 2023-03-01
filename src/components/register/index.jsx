@@ -21,11 +21,6 @@ export default function Register() {
 
 
     function registerUser() {
-
-        if(password !== password2){
-            document.getElementById("repPassword").setCustomValidity("Las contraseñas no coinciden");
-            document.getElementById("repPassword").reportValidity();
-        }
         console.log(name, surName, user, password, email, date, sports, description);
         //New user information
         const userInfo = {
@@ -75,11 +70,36 @@ export default function Register() {
                 <label htmlFor="passInput">Enter a password:</label>
                 <input id='passInput' type="password" required onChange={(e) => setPassword(e.target.value)}/>
                 <label htmlFor="pass2Input">Please repeat the password:</label>
-                <input id='pass2Input' type="password" required onChange={(e) => setPassword2(e.target.value)}/>
+                <input id='pass2Input' type="password" required 
+                    onChange={
+                        (e) => {setPassword2(e.target.value)}
+                    }
+                    onBlur={
+                        (e) => {
+                            if(password !== password2){
+                                e.target.setCustomValidity("Passwords don't match");
+                                e.target.reportValidity();
+                            } else {
+                                e.target.setCustomValidity("")
+                            }
+                        }
+                    }
+                />
                 <label htmlFor="emailInput">Enter your email:</label>
                 <input id='emailInput' type="email" required onChange={(e) => setEmail(e.target.value)}/>
                 <label htmlFor="dateInput">Enter your born date:</label>
-                <input id='dateInput' type="date" required onChange={(e) => setDate(e.target.value)}/>
+                <input id='dateInput' type="date" required onChange={
+                    (e) => {
+                        console.log(date);
+                        setDate(e.target.value)
+                        console.log(date);
+                        if (Date.parse(date) > new Date()) {
+                            e.target.setCustomValidity("Please select a date in the past")
+                        } else {
+                            e.target.setCustomValidity("")
+                        }
+                    }
+                }/>
                 <label htmlFor="sportsInput">Enter your principal Sport:</label>
                 <SelectSport id="sportsInput" setSports={setSports} onChange={(e) => setSports(e.target.textContent)}/>
                 <label htmlFor="descInput">Enter a brief description about yourself:</label>
