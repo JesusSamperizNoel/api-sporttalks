@@ -11,7 +11,7 @@ export default function Register() {
 
     const [name, setName] = useState("")
     const [surName, setSurName] = useState("")
-    const [user, setUser] = useState("")
+    const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
     const [email, setEmail] = useState("")
@@ -21,12 +21,12 @@ export default function Register() {
 
 
     function registerUser() {
-        console.log(name, surName, user, password, email, date, sports, description);
+        console.log(name, surName, userName, password, email, date, sports, description);
         //New user information
         const userInfo = {
             name,
             surName,
-            user,
+            userName,
             password,
             email,
             date,
@@ -66,7 +66,7 @@ export default function Register() {
                 <label htmlFor="surnameInput">Enter your surname:</label>
                 <input id='surnameInput' type="text" required onChange={(e) => setSurName(e.target.value)}/>
                 <label htmlFor="userInput">Enter your user alias:</label>
-                <input id='userInput' type="text" required onChange={(e) => setUser(e.target.value)}/>
+                <input id='userInput' type="text" required onChange={(e) => setUserName(e.target.value)}/>
                 <label htmlFor="passInput">Enter a password:</label>
                 <input id='passInput' type="password" required onChange={(e) => setPassword(e.target.value)}/>
                 <label htmlFor="pass2Input">Please repeat the password:</label>
