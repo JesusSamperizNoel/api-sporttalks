@@ -10,26 +10,46 @@ export default function Register() {
     const URL = "http://localhost:8080"
 
     const [name, setName] = useState("")
-    const [surName, setSurName] = useState("")
-    const [userName, setUserName] = useState("")
+    const [surname, setSurName] = useState("")
+    const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
     const [email, setEmail] = useState("")
-    const [date, setDate] = useState("")
-    const [sports, setSports] = useState("")
+    const [bornDate, setBornDate] = useState("")
+    const [sportsArray, setSportsArray] = useState([])//this is a variable to save array info from sports
+    const [sports, setSports] = useState("Sports: ")
     const [description, setDescription] = useState("")
 
 
+    function goToLogin() {
+        //go to login component
+    }
+
     function registerUser() {
-        console.log(name, surName, userName, password, email, date, sports, description);
-        //New user information
+        //Making good format for sports:
+
+        console.log(sportsArray);
+
+        const sportsString = ""
+        sportsArray.forEach((s) => {
+            
+            console.log(s.value);
+
+            sportsString.concat(s.value)
+            
+        })
+        setSports((sports) => setSports(sportsString))
+
+        console.log(sports);
+
+        //New user information:
         const userInfo = {
             name,
-            surName,
-            userName,
+            surname,
+            username,
             password,
             email,
-            date,
+            bornDate,
             sports,
             description
         }
@@ -44,9 +64,6 @@ export default function Register() {
         fetch(URL+"/user/create", options)
         .then(response=>{
             if(response.ok){
-                //Save sesion user in Local Storage:
-                localStorage.removeItem('sesUser')
-                localStorage.setItem('sesUser', JSON.stringify(userInfo))
                 alert("Se ha registrado un nuevo usuario en la plataforma, por favor inicie sesion")
             } else{
                 console.error(response.statusText)
@@ -55,11 +72,17 @@ export default function Register() {
         .catch(error=>console.error(error))
     }
 
+    function registAndLog() {
+        registerUser()
+        goToLogin()
+    }
+
     return (
         <div id='regist'>
             <h1>Sport Talks</h1>
             <h4>Talk and run</h4>
             <p>Please register a user on the platform</p>
+            <button id='buttonSubmit' onClick={goToLogin}>I already have an account</button>
             <div id='inputs'>
                 <label htmlFor="nameInput">Enter your name:</label>
                 <input id='nameInput' type="text" required onChange={(e) => setName(e.target.value)}/>
@@ -90,21 +113,20 @@ export default function Register() {
                 <label htmlFor="dateInput">Enter your born date:</label>
                 <input id='dateInput' type="date" required onChange={
                     (e) => {
-                        console.log(date);
-                        setDate(e.target.value)
-                        console.log(date);
-                        if (Date.parse(date) > new Date()) {
+                        setBornDate(new Date(e.target.value))
+                        if (bornDate >= new Date()) {
                             e.target.setCustomValidity("Please select a date in the past")
+                            e.target.reportValidity()
                         } else {
                             e.target.setCustomValidity("")
                         }
                     }
                 }/>
                 <label htmlFor="sportsInput">Enter your principal Sport:</label>
-                <SelectSport id="sportsInput" setSports={setSports} onChange={(e) => setSports(e.target.textContent)}/>
+                <SelectSport id="sportsInput" setSportsArray={setSportsArray} />
                 <label htmlFor="descInput">Enter a brief description about yourself:</label>
                 <input id='descInput' type="text" required onChange={(e) => setDescription(e.target.value)}/>
-                <button id='buttonSubmit' onClick={registerUser}>Submit</button>
+                <button id='buttonSubmit' onClick={registAndLog}>Submit</button>
             </div>
         </div>
     )

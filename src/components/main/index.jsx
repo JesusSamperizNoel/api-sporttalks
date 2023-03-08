@@ -49,7 +49,7 @@ export default function Main() {
         </ul>
         <div>
             <input id="mensaje" type="text" placeholder="Escribe un mensaje" />
-            <button class="enviar icon-enviar">Enviar</button>
+            <button className="enviar icon-enviar">Enviar</button>
         </div>
     </main>
     )

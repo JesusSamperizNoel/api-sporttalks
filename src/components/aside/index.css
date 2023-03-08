@@ -1,4 +1,4 @@
-aside{
+#aside{
     grid-area: aside;
     background-color: #5069f2;
     padding: 0% 5%;
@@ -11,7 +11,7 @@ aside{
     border-color: #160092;
     border-radius: 1%;
 }
-aside > h3{
+#aside > h3{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT';
     font-size: 1.8vw;

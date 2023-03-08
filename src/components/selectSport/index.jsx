@@ -5,7 +5,7 @@ import makeAnimated from 'react-select/animated';
 
 const animatedComponents = makeAnimated()
 
-export default function SelectSport({setSports}) {
+export default function SelectSport({setSportsArray}) {
 
     const sports = [
         { value: 'Athletics ', label: 'Athletics' },
@@ -21,7 +21,7 @@ export default function SelectSport({setSports}) {
         { value: 'Hockey ', label: 'Hockey' },
         { value: 'Golf ', label: 'Golf' },
         { value: 'Hunting ', label: 'Hunting' }
-      ]
+    ]
 
     return (
         <Select
@@ -30,6 +30,7 @@ export default function SelectSport({setSports}) {
             defaultValue={[sports[0]]}
             isMulti
             options={sports}
+            onChange={(e)=> setSportsArray(e)}
         />
     )
 }
