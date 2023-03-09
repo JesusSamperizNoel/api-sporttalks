@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 //Components:
 import SelectSport from "../selectSport";
 
 //Styles:
 import './index.css'
 
-export default function Register() {
+export default function SignIn() {
     
     const URL = "http://localhost:8080"
 
@@ -17,7 +17,7 @@ export default function Register() {
     const [email, setEmail] = useState("")
     const [bornDate, setBornDate] = useState("")
     const [sportsArray, setSportsArray] = useState([])//this is a variable to save array info from sports
-    const [sports, setSports] = useState("Sports: ")
+    const [sports, setSports] = useState("")
     const [description, setDescription] = useState("")
 
 
@@ -25,21 +25,7 @@ export default function Register() {
         //go to login component
     }
 
-    function registerUser() {
-        //Making good format for sports:
-
-        console.log(sportsArray);
-
-        const sportsString = ""
-        sportsArray.forEach((s) => {
-            
-            console.log(s.value);
-
-            sportsString.concat(s.value)
-            
-        })
-        setSports((sports) => setSports(sportsString))
-
+    function registerUser() {      
         console.log(sports);
 
         //New user information:
@@ -77,6 +63,12 @@ export default function Register() {
         goToLogin()
     }
 
+    //Making good format for sports:  
+    useEffect(() => {
+        const sportsString = sportsArray.map((s) => s.value).join(", ")
+        setSports(sportsString)
+    }, [sportsArray])
+
     return (
         <div id='regist'>
             <h1>Sport Talks</h1>
@@ -97,16 +89,16 @@ export default function Register() {
                     onChange={
                         (e) => {setPassword2(e.target.value)}
                     }
-                    onBlur={
-                        (e) => {
-                            if(password !== password2){
-                                e.target.setCustomValidity("Passwords don't match");
-                                e.target.reportValidity();
-                            } else {
-                                e.target.setCustomValidity("")
-                            }
+                    onBlur={(e) => {
+                        const passInput = document.querySelector('#passInput');
+                        if (password !== password2 && passInput !== null) {
+                            passInput.setCustomValidity("Passwords don't match");
+                            passInput.reportValidity();
+                        } else if (passInput !== null) {
+                            passInput.setCustomValidity("");
+                            passInput.focus();
                         }
-                    }
+                    }}
                 />
                 <label htmlFor="emailInput">Enter your email:</label>
                 <input id='emailInput' type="email" required onChange={(e) => setEmail(e.target.value)}/>

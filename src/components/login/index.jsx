@@ -41,10 +41,12 @@ en el localStorage con su atributo de id
             }
         })
         .then(res => {
-            setUserId(userid)
+            setUserId(res.id)
         })
         .catch(error=>console.error(error))
         //GET petition to get user for save in localStorage
+        let url = URL+("/user/"+String(userid))
+        console.log(url);
         fetch(URL+("/user/"+userid))
         .then(response=>{
             if(response.ok){
