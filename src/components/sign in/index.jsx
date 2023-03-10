@@ -5,9 +5,7 @@ import SelectSport from "../selectSport";
 //Styles:
 import './index.css'
 
-export default function SignIn() {
-    
-    const URL = "http://localhost:8080"
+export default function SignIn({URL}) {
 
     const [name, setName] = useState("")
     const [surname, setSurName] = useState("")
@@ -22,12 +20,14 @@ export default function SignIn() {
 
 
     function goToLogin() {
-        //go to login component
+
+
+        //GO TO LOGIN component
+
+
     }
 
-    function registerUser() {      
-        console.log(sports);
-
+    function registerUser() {     
         //New user information:
         const userInfo = {
             name,
@@ -47,6 +47,7 @@ export default function SignIn() {
             },
             body:JSON.stringify(userInfo)
         }
+        console.log(URL);
         fetch(URL+"/user/create", options)
         .then(response=>{
             if(response.ok){

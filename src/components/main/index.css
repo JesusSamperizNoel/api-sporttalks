@@ -14,7 +14,7 @@ main{
 main > h3{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT';
-    font-size: 2vw;
+    font-size: 3vh;
     margin-block-start: 0.1em;
     margin-block-end: 0em;
     padding-left: 35%;
@@ -28,7 +28,7 @@ main > ul > li{
     list-style: none;
     background-color: #daf3ff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2vw;
+    font-size: 1.5vh;
     width: max-content;
     max-width: 52vw;
     border-radius: 5vh;
@@ -45,7 +45,7 @@ main > ul > li{
     box-sizing: border-box;
     border: 0.2vw solid #ccc;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2vw;
+    font-size: 2vh;
     -webkit-transition: 0.5s;
     transition: .2s;
     outline: none;
@@ -58,7 +58,7 @@ main > ul > li{
   display: inline-block;
   padding: 15px 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.4vw;
+  font-size: 2.6vh;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -66,8 +66,8 @@ main > ul > li{
   color: #5069f2;
   background-color: #daf3ff;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #e6e6e6;
+  border-radius: 1vh;
+  box-shadow: 0 1vh #e6e6e6;
 }
 .enviar:hover {
     background-color: #2308be;
@@ -75,7 +75,7 @@ main > ul > li{
 }
 .enviar:active {
   background-color: #daf3ff;
-  box-shadow: 0 2px #008cff;
+  box-shadow: 0 .5vh #008cff;
   color: #008cff;
-  transform: translateY(2px);
+  transform: translateY(.2vh);
 }

@@ -1,10 +1,10 @@
 //Styles:
-import { useState } from 'react'
 import './index.css'
+//React:
+import { useState } from 'react'
 
-export default function Main({messages, setReload}) {
+export default function Main({URL, messages, setReload}) {
   
-    const URL = "http://localhost:8080"
     const userLS = JSON.parse(localStorage.getItem("sesUser"))
     const talkLS = JSON.parse(localStorage.getItem("selectedTalk"))
 
@@ -16,7 +16,6 @@ export default function Main({messages, setReload}) {
             transmitter: userLS.id,
             groupReceiver: talkLS.talkId
         }
-        console.log(sendReq);
         const options={
             method:"POST",
             headers:{

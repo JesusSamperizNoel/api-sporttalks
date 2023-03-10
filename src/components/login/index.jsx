@@ -1,14 +1,7 @@
 import { useState } from 'react'
 import './index.css'
 
-export default function Login() {
-
-/*
-Hay que guardar el usuario que ha iniciado sesion 
-en el localStorage con su atributo de id
-*/
-
-    const URL = "http://localhost:8080"
+export default function Login({URL}) {
     
     const [userid, setUserId] = useState("")
     const [name, setName] = useState("")
@@ -45,9 +38,7 @@ en el localStorage con su atributo de id
         })
         .catch(error=>console.error(error))
         //GET petition to get user for save in localStorage
-        let url = URL+("/user/"+String(userid))
-        console.log(url);
-        fetch(URL+("/user/"+userid))
+        fetch(`${URL}/user/${userid}`)
         .then(response=>{
             if(response.ok){
                 return response.json()
@@ -56,6 +47,7 @@ en el localStorage con su atributo de id
             }
         })
         .then(user => {
+            console.log(user);
             localStorage.removeItem('sesUser')
             localStorage.setItem('sesUser', JSON.stringify(user))
         })
@@ -67,9 +59,9 @@ en el localStorage con su atributo de id
             <h1>Sport Talks</h1>
             <h4>Talk and run</h4>
             <div id='inputs'>
-                <label htmlFor="userInput">Introduzca un usuario:</label>
+                <label htmlFor="userInput">Enter a user:</label>
                 <input id='userInput' type="text" onChange={(e) => {setName(e.target.value)}}/>
-                <label htmlFor="passInput">Introduzca su contraseña:</label>
+                <label htmlFor="passInput">Enter a password:</label>
                 <input id='passInput' type="password" onChange={(e) => {setPassword(e.target.value)}}/>
                 <p>{inputsResponse}</p>
             </div>
